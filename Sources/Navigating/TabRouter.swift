@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Result builder used to declare tab routes.
 @resultBuilder
 public struct TabRouteBuilder {
     
@@ -18,6 +19,7 @@ public struct TabRouteBuilder {
 }
 
 
+/// A TabView-based router that wires each tab into its own navigation stack.
 public struct TabRouter: View {
     
     @Bindable private var router: Router
@@ -51,6 +53,7 @@ public struct TabRouter: View {
 }
 
 
+/// A single tab configuration (id, content, and tab item view).
 public struct TabRoute: Hashable, Identifiable {
 
     public let id: AnyHashable

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A Button that receives the current Router from the environment.
 public struct RouterButton<Label: View>: View {
     
     @Environment(Router.self) private var router
@@ -23,7 +24,7 @@ public struct RouterButton<Label: View>: View {
         self.label = label
     }
     
-    init<Destination: View>(
+    public init<Destination: View>(
         push destination: @escaping @autoclosure () -> Destination,
         @ViewBuilder label: @escaping () -> Label
     ) {
@@ -32,7 +33,7 @@ public struct RouterButton<Label: View>: View {
         }, label: label)
     }
         
-    init<Destination: View>(
+    public init<Destination: View>(
         sheet destination: @escaping @autoclosure () -> Destination,
         @ViewBuilder label: @escaping () -> Label
     ) {
@@ -41,7 +42,7 @@ public struct RouterButton<Label: View>: View {
         }, label: label)
     }
         
-    init<Destination: View>(
+    public init<Destination: View>(
         fullScreen destination: @escaping @autoclosure () -> Destination,
         @ViewBuilder label: @escaping () -> Label
     ) {

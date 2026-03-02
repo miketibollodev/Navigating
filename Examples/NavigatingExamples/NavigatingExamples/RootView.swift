@@ -8,9 +8,10 @@
 import SwiftUI
 import Navigating
 
+/// Tab identifiers used in the example app.
 public enum TabIdentifier {
     case home
-    case profile
+    case debug
 }
 
 struct RootView: View {
@@ -22,13 +23,13 @@ struct RootView: View {
             TabRoute(id: TabIdentifier.home) {
                 BasicExamplesView()
             } tabItem: {
-                Text("Home")
+                Label("Home", systemImage: "house.fill")
             }
             
-            TabRoute(id: TabIdentifier.profile) {
-                BasicExamplesView()
+            TabRoute(id: TabIdentifier.debug) {
+                DebugExamplesView()
             } tabItem: {
-                Text("Profile")
+                Label("Debug", systemImage: "ladybug.fill")
             }
         }
     }

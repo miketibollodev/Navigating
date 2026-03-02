@@ -7,13 +7,22 @@
 
 import SwiftUI
 
-public struct Route: Hashable, Identifiable {
+/// A type-erased destination used internally by the router.
+public struct Route: Hashable, Identifiable, CustomStringConvertible {
     
     public let id = UUID()
+    
+    /// Optional name that can be used for debugging, analytics, or
+    /// programmatic navigation decisions.
+    public let name: String?
 
     public let build: () -> AnyView
     
-    public init<Content: View>(_ view: Content) {
+    public init<Content: View>(
+        _ view: Content,
+        name: String? = nil
+    ) {
+        self.name = name
         self.build = { AnyView(view) }
     }
     
@@ -23,5 +32,13 @@ public struct Route: Hashable, Identifiable {
     
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
+    }
+    
+    public var description: String {
+        if let name {
+            return "Route(name: \(name), id: \(id))"
+        } else {
+            return "Route(id: \(id))"
+        }
     }
 }
