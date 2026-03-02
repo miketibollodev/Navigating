@@ -10,7 +10,8 @@ import Navigating
 
 /// Tab identifiers used in the example app.
 public enum TabIdentifier {
-    case home
+    case basics
+    case programmatic
     case debug
 }
 
@@ -20,10 +21,16 @@ struct RootView: View {
     
     var body: some View {
         TabRouter(router: router) {
-            TabRoute(id: TabIdentifier.home) {
+            TabRoute(id: TabIdentifier.basics) {
                 BasicExamplesView()
             } tabItem: {
-                Label("Home", systemImage: "house.fill")
+                Label("Basics", systemImage: "square.grid.2x2.fill")
+            }
+            
+            TabRoute(id: TabIdentifier.programmatic) {
+                ProgrammaticExamplesView()
+            } tabItem: {
+                Label("Programmatic", systemImage: "gearshape.fill")
             }
             
             TabRoute(id: TabIdentifier.debug) {
@@ -32,49 +39,5 @@ struct RootView: View {
                 Label("Debug", systemImage: "ladybug.fill")
             }
         }
-    }
-}
-
-//
-//  Destination.swift
-//  Navigating
-//
-//  Created by Michael Tibollo on 2026-03-01.
-//
-
-import Foundation
-import Observation
-import SwiftUI
-
-
-// MARK: - Outside of Package
-
-public struct NavButton: View {
-    
-    @Environment(Router.self) private var router
-    
-    public var body: some View {
-        Button("Push") {
-            router.push(
-                PushView(data: ["1", "2", "3"])
-            )
-        }
-    }
-}
-
-
-public struct PushView: View {
-    
-    public var id = "PushView"
-    
-    public var data: [String]
-    
-    public var body: some View {
-        Text("Push View \(Int.random(in: 0...100))")
-            .foregroundStyle(Bool.random() ? .red : .blue)
-    }
-    
-    init(data: [String]) {
-        self.data = data
     }
 }
