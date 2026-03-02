@@ -1,13 +1,13 @@
 ## Navigating
 
-Lightweight navigation helpers for SwiftUI apps. No route enums, no global coordinators – just a small `Router` object, a few container views, and simple helpers for push, tabs, sheets, and full‑screen covers.
+Lightweight navigation helpers for SwiftUI apps. Navigating is based around a small `Router` object and a few container views, with simple helpers for push, tabs, sheets, and full-screen covers.
 
 ### Installation
 
 Add the package to your project with Swift Package Manager:
 
 ```swift
-.package(url: "https://github.com/your-org/Navigating.git", from: "1.0.0")
+.package(url: "https://github.com/miketibollodev/Navigating.git", from: "0.1.0")
 ```
 
 Then add `Navigating` as a dependency of your app target.
