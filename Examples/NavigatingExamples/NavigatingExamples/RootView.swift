@@ -1,4 +1,40 @@
 //
+//  RootView.swift
+//  NavigatingExamples
+//
+//  Created by Michael Tibollo on 2026-03-02.
+//
+
+import SwiftUI
+import Navigating
+
+public enum TabIdentifier {
+    case home
+    case profile
+}
+
+struct RootView: View {
+    
+    @State var router: Router = .init(level: 0)
+    
+    var body: some View {
+        TabRouter(router: router) {
+            TabRoute(id: TabIdentifier.home) {
+                BasicExamplesView()
+            } tabItem: {
+                Text("Home")
+            }
+            
+            TabRoute(id: TabIdentifier.profile) {
+                BasicExamplesView()
+            } tabItem: {
+                Text("Profile")
+            }
+        }
+    }
+}
+
+//
 //  Destination.swift
 //  Navigating
 //
@@ -21,34 +57,6 @@ public struct NavButton: View {
             router.push(
                 PushView(data: ["1", "2", "3"])
             )
-        }
-    }
-}
-
-public struct RootView: View {
-    
-    @State var router: Router = .init(level: 0)
-    
-    public var body: some View {
-        TabRouter(router: router) {
-            TabRoute {
-                VStack {
-                    NavButton()
-                    
-                    Button("Info") {
-                        print(router.navigationStackPath)
-                        print(router.level)
-                    }
-                }
-            } tabItem: {
-                Text("Home")
-            }
-
-            TabRoute {
-                NavButton()
-            } tabItem: {
-                Text("Profile")
-            }
         }
     }
 }

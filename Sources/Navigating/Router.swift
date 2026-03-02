@@ -86,5 +86,4 @@ public final class Router {
         parent?.resignActive()
         isActive = true
     }
-    
 }
