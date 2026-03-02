@@ -20,7 +20,7 @@ public struct PushView: View {
             Text("Push View")
                 .font(.title3)
             Text("Random: \(Int.random(in: 0...100))")
-            Text("Data: \(data.joined(separator: \", \"))")
+            Text("Data: \(data.description)")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
         }

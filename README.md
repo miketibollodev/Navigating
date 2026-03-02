@@ -12,7 +12,7 @@ Add the package to your project with Swift Package Manager:
 
 Then add `Navigating` as a dependency of your app target.
 
-### Quick start (single stack)
+### Quick start
 
 Use `RootRouterView` when you want a single navigation stack with push and modals:
 
